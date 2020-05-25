@@ -1,7 +1,6 @@
-from numpy import load
 
 
-def huff_decode(code_table, decoded_list, coded_file):
+def huff_decode(code_table,  coded_file, decoded_list):
     to_be_decoded_string = ""
     # we get the first byte which contains the number of extra zeroes appended at the end of the file
     extra_bits = coded_file[0]

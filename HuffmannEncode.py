@@ -37,7 +37,6 @@ def huff_encode(input_list, code_table, filename):
         prob[ch] = freq[ch] / len(input_list)
 
     # make a class for nodes
-
     class Node:
         def __init__(self, value, weight, right, left):
             self.value = value
@@ -45,7 +44,7 @@ def huff_encode(input_list, code_table, filename):
             self.right = right
             self.left = left
 
-    queue1 = queue.PriorityQueue()
+    huff_tree = queue.PriorityQueue()
 
     # counter is used to prevent errors due to the nearly similar values of probability when inserting
     # in the priority queue
@@ -53,23 +52,23 @@ def huff_encode(input_list, code_table, filename):
 
     # add leaf nodes to the queue
     for ch in prob.keys():
-        node1 = Node(ch, prob[ch], None, None)
+        leaf = Node(ch, prob[ch], None, None)
         counter = counter + 1
-        queue1.put((node1.weight, counter, node1))
+        huff_tree.put((leaf.weight, counter, leaf))
 
     # build huffman tree
-    while len(queue1.queue) > 1:
+    while len(huff_tree.queue) > 1:
         counter = counter + 1
 
-        min1 = queue1.get()
-        min2 = queue1.get()
+        min1 = huff_tree.get()
+        min2 = huff_tree.get()
 
         new_node = Node(None, min1[0] + min2[0], min1[2], min2[2])
-        queue1.put((new_node.weight, counter, new_node))
+        huff_tree.put((new_node.weight, counter, new_node))
 
     # generating code table
     # building the code table
-    build_codetable(queue1.queue[0][2], "", code_table)
+    build_codetable(huff_tree.queue[0][2], "", code_table)
 
     # encoding
     # prepare binary string
@@ -78,8 +77,8 @@ def huff_encode(input_list, code_table, filename):
     for ch in input_list:
         coded_string = coded_string + code_table[ch]
 
-    # store the coded file in a file
-    # if the length of the coded file is not a multiple of 8 append zeroes at the end so that it becomes a multiple of 8
+    # if the length of the coded string is not a multiple of 8 (bytes) append zeroes at the end
+    # so that it becomes a multiple of 8 and store the number of appended zeroes at the beginning of the string
     number_of_extra_bits = 8 - (len(coded_string) % 8)
     if number_of_extra_bits != 8:
         for i in range(number_of_extra_bits):
@@ -87,8 +86,8 @@ def huff_encode(input_list, code_table, filename):
 
     binary_string = b""
     # append all the bits of code words as a string of (bytes) where the number of bits will always be a multiple of 8
-    a = int(len(coded_string) / 8)
-    for i in range(a):
+    num_of_bytes = int(len(coded_string) / 8)
+    for i in range(num_of_bytes):
         binary_string = binary_string + bitstring_to_bytes(coded_string[(8*i):(i*8)+8])
 
     # encode the number of extra zeroes appended at the end of
