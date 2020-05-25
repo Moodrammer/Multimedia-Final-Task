@@ -20,7 +20,7 @@ def bitstring_to_bytes(s):
     return int(s, 2).to_bytes(1, byteorder='big')
 
 
-def huff_encode(input_list, code_table, filename):
+def huff_encode(input_list, filename):
     freq = {}
 
     # Construct frequency array
@@ -35,6 +35,13 @@ def huff_encode(input_list, code_table, filename):
 
     for ch in freq.keys():
         prob[ch] = freq[ch] / len(input_list)
+
+    # prepare lists to send to the decoder
+    levels_list = []
+    prob_list = []
+    for ch in prob.keys():
+        levels_list.append(ch)
+        prob_list.append(prob[ch])
 
     # make a class for nodes
     class Node:
@@ -68,6 +75,7 @@ def huff_encode(input_list, code_table, filename):
 
     # generating code table
     # building the code table
+    code_table = {}
     build_codetable(huff_tree.queue[0][2], "", code_table)
 
     # encoding
@@ -95,6 +103,6 @@ def huff_encode(input_list, code_table, filename):
     binary_string = number_of_extra_bits.to_bytes(1, byteorder='big') + binary_string
 
     save(filename, binary_string)
-    return binary_string
+    return binary_string, levels_list, prob_list
 
 

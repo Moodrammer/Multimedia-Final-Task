@@ -62,12 +62,18 @@ save("levels", imageLevelsArray)
 save("counts", levelCountsArray)
 
 # 5. Use Huffman encoding to encode the levels and the counts arrays
-code_table_levels = {}
-coded_levels_string = huff_encode(imageLevels, code_table_levels, "huff_levels")
-code_table_counts = {}
-coded_counts_string = huff_encode(levelCounts, code_table_counts, "huff_counts")
+coded_levels_string, lvl_levels_list, lvl_prob_list = huff_encode(imageLevels, "huff_levels")
+coded_counts_string, cnts_levels_list, cnts_prob_list = huff_encode(levelCounts, "huff_counts")
 
-print(code_table_levels)
+# saving the lists passed to decoder to rebuild the huffman tree
+lvl_levels_list_array = np.array(lvl_levels_list, dtype=np.uint8)
+cnt_levels_list_array = np.array(cnts_levels_list, dtype=np.uint8)
+lvl_prob_list_array = np.array(lvl_prob_list)
+cnt_prob_list_array = np.array(cnts_prob_list)
+save("lvl_levels_list", lvl_levels_list_array)
+save("lvl_prob_list", lvl_prob_list_array)
+save("cnts_levels_list", cnt_levels_list_array)
+save("cnts_prob_list", cnt_prob_list_array)
 
 # snap time at the end of encoding
 end_of_encoding_time = timing.snap()
@@ -86,9 +92,9 @@ start_of_decoding_time = timing.snap();
 print("Start Decoding")
 
 decoded_levels = []
-huff_decode(code_table_levels, coded_levels_string,  decoded_levels)
+huff_decode(lvl_levels_list, lvl_prob_list, coded_levels_string,  decoded_levels)
 decoded_counts = []
-huff_decode(code_table_counts, coded_counts_string,  decoded_counts)
+huff_decode(cnts_levels_list, cnts_prob_list, coded_counts_string,  decoded_counts)
 
 # 1. decoding image
 decoded_flattened_image = []

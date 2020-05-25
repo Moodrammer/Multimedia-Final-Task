@@ -1,4 +1,4 @@
-#python3
+# python3
 import atexit
 from time import time, strftime, localtime
 from datetime import timedelta
