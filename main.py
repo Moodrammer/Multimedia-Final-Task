@@ -62,18 +62,27 @@ save("levels", imageLevelsArray)
 save("counts", levelCountsArray)
 
 # 5. Use Huffman encoding to encode the levels and the counts arrays
-coded_levels_string, lvl_levels_list, lvl_prob_list = huff_encode(imageLevels, "huff_levels")
-coded_counts_string, cnts_levels_list, cnts_prob_list = huff_encode(levelCounts, "huff_counts")
+coded_levels_string, lvl_levels_list, lvl_prob_list, bs_length_levels = huff_encode(imageLevels, "huff_levels")
+coded_counts_string, cnts_levels_list, cnts_prob_list, bs_length_counts = huff_encode(levelCounts, "huff_counts")
 
 # saving the lists passed to decoder to rebuild the huffman tree
 lvl_levels_list_array = np.array(lvl_levels_list, dtype=np.uint8)
 cnt_levels_list_array = np.array(cnts_levels_list, dtype=np.uint8)
 lvl_prob_list_array = np.array(lvl_prob_list)
 cnt_prob_list_array = np.array(cnts_prob_list)
-save("lvl_levels_list", lvl_levels_list_array)
-save("lvl_prob_list", lvl_prob_list_array)
-save("cnts_levels_list", cnt_levels_list_array)
-save("cnts_prob_list", cnt_prob_list_array)
+save("levels_list", lvl_levels_list_array)
+save("levels_probabilities_list", lvl_prob_list_array)
+save("level_counts_list", cnt_levels_list_array)
+save("level_counts_probabilities_list", cnt_prob_list_array)
+
+# calculating the compression ratio
+sizeBefore = flattenedImage.size * 8
+print("Size before : " + str(sizeBefore) + " bits")
+sizeAfter = bs_length_counts + bs_length_levels + lvl_levels_list_array.size * 8
+sizeAfter += cnt_prob_list_array.size * 64 + cnt_levels_list_array.size * 8 + lvl_prob_list_array.size * 64
+print("Size After : " + str(sizeAfter) + " bits")
+compressionRatio = sizeBefore / sizeAfter
+print("compression ratio = " + str(compressionRatio))
 
 # snap time at the end of encoding
 end_of_encoding_time = timing.snap()
@@ -112,6 +121,8 @@ for index in range(len(decoded_levels)):
 # 2. reshaping the image
 decoded_flattened_image_array = np.array(decoded_flattened_image, dtype=np.uint8)
 decoded_image = decoded_flattened_image_array.reshape((nRows, nColumns))
+
+print(decoded_flattened_image)
 
 # take a snap at end of decoding
 end_of_decoding_time = timing.snap()

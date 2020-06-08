@@ -101,8 +101,9 @@ def huff_encode(input_list, filename):
     # encode the number of extra zeroes appended at the end of
     # the file and write it as the first byte for decoding purpose
     binary_string = number_of_extra_bits.to_bytes(1, byteorder='big') + binary_string
+    binary_string_length = num_of_bytes * 8 + number_of_extra_bits
 
     save(filename, binary_string)
-    return binary_string, levels_list, prob_list
+    return binary_string, levels_list, prob_list, binary_string_length
 
 
