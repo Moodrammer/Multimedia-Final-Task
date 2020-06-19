@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2b979a2f-4ce3-417f-b27a-eb783823acce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HuffmannEncode.py" beforeDir="false" afterPath="$PROJECT_DIR$/HuffmannEncode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/MultimediaFinalReport.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/MultimediaFinalReport.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cnts_levels_list.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cnts_prob_list.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/counts.npy" beforeDir="false" afterPath="$PROJECT_DIR$/counts.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huff_counts.npy" beforeDir="false" afterPath="$PROJECT_DIR$/huff_counts.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huff_levels.npy" beforeDir="false" afterPath="$PROJECT_DIR$/huff_levels.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/DecodedImage.tif" beforeDir="false" afterPath="$PROJECT_DIR$/images/DecodedImage.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels.npy" beforeDir="false" afterPath="$PROJECT_DIR$/levels.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lvl_levels_list.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lvl_prob_list.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,22 +82,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590393119204" />
-    <state width="1345" height="234" key="GridCell.Tab.0.bottom" timestamp="1591626942117">
+    <state width="1345" height="234" key="GridCell.Tab.0.bottom" timestamp="1591628592816">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591626942117" />
-    <state width="1345" height="234" key="GridCell.Tab.0.center" timestamp="1591626942117">
+    <state width="1345" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591628592816" />
+    <state width="1345" height="234" key="GridCell.Tab.0.center" timestamp="1591628592816">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591626942117" />
-    <state width="1345" height="234" key="GridCell.Tab.0.left" timestamp="1591626942117">
+    <state width="1345" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591628592816" />
+    <state width="1345" height="234" key="GridCell.Tab.0.left" timestamp="1591628592812">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591626942117" />
-    <state width="1345" height="234" key="GridCell.Tab.0.right" timestamp="1591626942117">
+    <state width="1345" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591628592812" />
+    <state width="1345" height="234" key="GridCell.Tab.0.right" timestamp="1591628592816">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591626942117" />
+    <state width="1345" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591628592816" />
     <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1590437301790">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
